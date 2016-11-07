@@ -4,6 +4,7 @@
 import json
 import requests
 import datetime
+import tagnames
 
 _url = 'http://eponyms.ossus.ch/XML/eponyms.json'
 _author = 'ajyee'
@@ -31,8 +32,6 @@ class EponymAntique:
 				}
 			}
 		}
-		if self.id:
-			main['_id'] = self.id
 		if self.modified is not None:
 			md = self.added.split('/')
 			mod = datetime.date(int(md[2]), int(md[0]), int(md[1]))
@@ -48,7 +47,27 @@ def download():
 
 
 def convert(antiques):
-	docs = [e.document for e in antiques]
+	docs = []
+	
+	# add tag documents
+	tags = set()
+	for e in antiques:
+		tags |= set(e.tags)
+	for tag in sorted(tags):
+		if tag not in tagnames.tagnames:
+			raise Exception("Untranslated tag: {}. Add it to tagnames.py".format(tag))
+		docs.append({
+			'type': 'tag',
+			'author': _author,
+			'date': '1998-03-21',
+			'tag': tag.lower(),
+			'localized': {
+				_lang: tagnames.tagnames[tag]
+			}
+		})
+	
+	# add eponym documents
+	docs.extend([e.document for e in antiques])
 	doc = {
 		'date': datetime.date.today().isoformat(),
 		'documents': docs,

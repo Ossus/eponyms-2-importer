@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+tagnames = {
+	"ANAT": "Anatomy",
+	"BIOCHEM": "Biochemistry and Metabolism",
+	"CV": "Cardiovascular",
+	"DERM": "Dermatology",
+	"ENDO": "Endocrinology",
+	"ENT": "Ear, Nose and Throat",
+	"GEO": "Geographical",
+	"GI": "Gastrointestinal",
+	"GYN": "Gynecology",
+	"HEME": "Hematology",
+	"ID": "Infectious Disease",
+	"MISC": "Miscellaneous",
+	"NEURO": "Neurology",
+	"OB": "Obstetrics",
+	"ONC": "Oncology",
+	"OPHTH": "Ophthalmology",
+	"ORTHO": "Orthopedics",
+	"PATH": "Pathology",
+	"PEDS": "Pediatrics",
+	"PROC": "Procedures and Tests",
+	"PSYCH": "Psychiatry",
+	"PULM": "Pulmonary",
+	"RAYS": "Radiology",
+	"RENAL": "Renal",
+	"RHEUM": "Rheumatology",
+	"SIGN": "Signs",
+	"SYND": "Syndromes",
+	"URO": "Urology",
+}
